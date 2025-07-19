@@ -1,2 +1,33 @@
 # Lab2_Compis
 Laboratorio 2: Sistema de Tipos con ANTLR
+
+---
+
+Nelson Eduardo García Bravatti 
+22434
+
+
+
+## Link del video de YT:
+
+```youtube
+```
+
+---
+
+## Comandos usados:
+
+Creando alias:
+```bash
+alias antlr4='java -Xmx500M -cp "/usr/local/lib/antlr-4.13.1-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
+```
+
+Compilación de la gramática
+```bash
+antlr4 -Dlanguage=Python3 'nombre del archivo .g4'
+```
+
+Para correr el driver:
+```bash
+antlr4 -Dlanguage=Python3 'nombre del archivo .g4'
+```
