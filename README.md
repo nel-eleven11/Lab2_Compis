@@ -29,5 +29,8 @@ antlr4 -Dlanguage=Python3 'nombre del archivo .g4'
 
 Para correr el driver:
 ```bash
-antlr4 -Dlanguage=Python3 'nombre del archivo .g4'
+python3 Driver.py program_test_pass.txt
+```
+```bash
+python3 DriverListener.py program_test_pass.txt
 ```
