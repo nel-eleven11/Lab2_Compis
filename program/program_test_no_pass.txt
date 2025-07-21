@@ -2,3 +2,8 @@
 (3 + 2) * "7"
 9.0 - true
 "hello" + 3
+"hola" % 4
+4 // false
+None + 5
+10 / b"si"
+(false + 2) - ...
