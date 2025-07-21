@@ -26,12 +26,30 @@ class SimpleLangListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by SimpleLangParser#ModDiv.
+    def enterModDiv(self, ctx:SimpleLangParser.ModDivContext):
+        pass
+
+    # Exit a parse tree produced by SimpleLangParser#ModDiv.
+    def exitModDiv(self, ctx:SimpleLangParser.ModDivContext):
+        pass
+
+
     # Enter a parse tree produced by SimpleLangParser#Float.
     def enterFloat(self, ctx:SimpleLangParser.FloatContext):
         pass
 
     # Exit a parse tree produced by SimpleLangParser#Float.
     def exitFloat(self, ctx:SimpleLangParser.FloatContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleLangParser#Bytes.
+    def enterBytes(self, ctx:SimpleLangParser.BytesContext):
+        pass
+
+    # Exit a parse tree produced by SimpleLangParser#Bytes.
+    def exitBytes(self, ctx:SimpleLangParser.BytesContext):
         pass
 
 
@@ -68,6 +86,24 @@ class SimpleLangListener(ParseTreeListener):
 
     # Exit a parse tree produced by SimpleLangParser#Parens.
     def exitParens(self, ctx:SimpleLangParser.ParensContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleLangParser#Ellipsis.
+    def enterEllipsis(self, ctx:SimpleLangParser.EllipsisContext):
+        pass
+
+    # Exit a parse tree produced by SimpleLangParser#Ellipsis.
+    def exitEllipsis(self, ctx:SimpleLangParser.EllipsisContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleLangParser#Nonetype.
+    def enterNonetype(self, ctx:SimpleLangParser.NonetypeContext):
+        pass
+
+    # Exit a parse tree produced by SimpleLangParser#Nonetype.
+    def exitNonetype(self, ctx:SimpleLangParser.NonetypeContext):
         pass
 
 

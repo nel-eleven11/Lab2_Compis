@@ -19,8 +19,18 @@ class SimpleLangVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by SimpleLangParser#ModDiv.
+    def visitModDiv(self, ctx:SimpleLangParser.ModDivContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by SimpleLangParser#Float.
     def visitFloat(self, ctx:SimpleLangParser.FloatContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimpleLangParser#Bytes.
+    def visitBytes(self, ctx:SimpleLangParser.BytesContext):
         return self.visitChildren(ctx)
 
 
@@ -41,6 +51,16 @@ class SimpleLangVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by SimpleLangParser#Parens.
     def visitParens(self, ctx:SimpleLangParser.ParensContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimpleLangParser#Ellipsis.
+    def visitEllipsis(self, ctx:SimpleLangParser.EllipsisContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimpleLangParser#Nonetype.
+    def visitNonetype(self, ctx:SimpleLangParser.NonetypeContext):
         return self.visitChildren(ctx)
 
 
