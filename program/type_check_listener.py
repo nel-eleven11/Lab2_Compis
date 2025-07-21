@@ -1,6 +1,6 @@
 from SimpleLangListener import SimpleLangListener
 from SimpleLangParser import SimpleLangParser
-from custom_types import IntType, FloatType, StringType, BoolType
+from custom_types import IntType, FloatType, StringType, BoolType, EllipsisType, BytesType, NonetypeType
 
 class TypeCheckListener(SimpleLangListener):
 
@@ -28,6 +28,16 @@ class TypeCheckListener(SimpleLangListener):
       self.errors.append(f"Unsupported operand types for + or -: {left_type} and {right_type}")
     self.types[ctx] = FloatType() if isinstance(left_type, FloatType) or isinstance(right_type, FloatType) else IntType()
 
+  def enterModDiv(self, ctx: SimpleLangParser.AddSubContext):
+    pass
+
+  def exitModDiv(self, ctx: SimpleLangParser.MulDivContext):
+    left_type = self.types[ctx.expr(0)]
+    right_type = self.types[ctx.expr(1)]
+    if not self.is_valid_arithmetic_operation(left_type, right_type):
+      self.errors.append(f"Unsupported operand types for '%' or //: {left_type} and {right_type}")
+    self.types[ctx] = FloatType() if isinstance(left_type, FloatType) or isinstance(right_type, FloatType) else IntType()
+
   def enterInt(self, ctx: SimpleLangParser.IntContext):
     self.types[ctx] = IntType()
 
@@ -39,6 +49,15 @@ class TypeCheckListener(SimpleLangListener):
 
   def enterBool(self, ctx: SimpleLangParser.BoolContext):
     self.types[ctx] = BoolType()
+
+  def enterEllipsis(self, ctx: SimpleLangParser.EllipsisContext):
+    self.types[ctx] = EllipsisType()
+
+  def enterBytes(self, ctx: SimpleLangParser.BytesContext):
+    self.types[ctx] = BytesType()
+
+  def enterNonetype(self, ctx: SimpleLangParser.NonetypeContext):
+    self.types[ctx] = NonetypeType()
 
   def enterParens(self, ctx: SimpleLangParser.ParensContext):
     pass

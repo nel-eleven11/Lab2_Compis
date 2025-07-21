@@ -1,6 +1,6 @@
 from SimpleLangParser import SimpleLangParser
 from SimpleLangVisitor import SimpleLangVisitor
-from custom_types import IntType, FloatType, StringType, BoolType
+from custom_types import IntType, FloatType, StringType, BoolType, EllipsisType, BytesType, NonetypeType
 
 class TypeCheckVisitor(SimpleLangVisitor):
 
@@ -21,6 +21,15 @@ class TypeCheckVisitor(SimpleLangVisitor):
         return FloatType() if isinstance(left_type, FloatType) or isinstance(right_type, FloatType) else IntType()
     else:
         raise TypeError("Unsupported operand types for + or -: {} and {}".format(left_type, right_type))
+
+  def visitModDiv(self, ctx: SimpleLangParser.AddSubContext):
+    left_type = self.visit(ctx.expr(0))
+    right_type = self.visit(ctx.expr(1))
+    
+    if isinstance(left_type, (IntType, FloatType)) and isinstance(right_type, (IntType, FloatType)):
+        return FloatType() if isinstance(left_type, FloatType) or isinstance(right_type, FloatType) else IntType()
+    else:
+        raise TypeError("Unsupported operand types for '%' or //: {} and {}".format(left_type, right_type))
   
   def visitInt(self, ctx: SimpleLangParser.IntContext):
     return IntType()
@@ -36,3 +45,12 @@ class TypeCheckVisitor(SimpleLangVisitor):
 
   def visitParens(self, ctx: SimpleLangParser.ParensContext):
     return self.visit(ctx.expr())
+
+  def visitEllipsis(self, ctx: SimpleLangParser.EllipsisContext):
+    return EllipsisType()
+
+  def visitBytes(self, ctx: SimpleLangParser.BytesContext):
+    return BytesType()
+
+  def visitNoneType(self, ctx: SimpleLangParser.NonetypeContext):
+    return NonetypeType()
